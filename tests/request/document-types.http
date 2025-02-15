@@ -1,0 +1,42 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 36|LRAC0b1dsfxa9MhuUXHA1UN0CFcvJXdTNYlqcD3hf6a49f2b
+
+### Get all document types
+GET {{baseUrl}}/master/document-types/all
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create new document type
+POST {{baseUrl}}/master/document-types
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "type_name": "Certificate"
+}
+
+### Get single document type
+GET {{baseUrl}}/master/document-types/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Update document type
+PUT {{baseUrl}}/master/document-types/24
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "type_name": "Updated Certificate"
+}
+
+### Delete document type
+DELETE {{baseUrl}}/master/document-types/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Search document types
+GET {{baseUrl}}/master/document-types/search
+Authorization: Bearer {{token}}
+Accept: application/json

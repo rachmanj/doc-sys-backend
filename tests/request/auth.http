@@ -1,0 +1,109 @@
+### Register
+POST http://127.0.0.1:8000/api/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Seo Dalmi",
+    "username": "dalmi",
+    "email": "dalmi@example.com",
+    "password": "12345678",
+    "password_confirmation": "12345678",
+    "nik": "252525",
+    "project": "001H",
+    "department_id": 1
+}
+
+### Login with username
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "superadmin",
+    "password": "123456"
+}
+
+### Login with email
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "dalmi@example.com",
+    "password": "12345678"
+}
+
+### Get User Info
+GET http://127.0.0.1:8000/api/auth/me
+Authorization: Bearer 8|hOAzeNNCfQNLDVnI81spvek9Mg6QC59ylyULgaCI8866c03b
+Accept: application/json
+
+### Logout
+POST http://127.0.0.1:8000/api/auth/logout
+Authorization: Bearer 1|0Bv2Yo3OjyM4DqDFJrXrAUFGkGq4ddblhq5fEZVy08c61db6
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/api/test HTTP/1.1
+Accept: application/json
+
+### Get All Roles
+GET http://127.0.0.1:8000/api/roles
+Authorization: Bearer 2|szE1LnECfpX5ZcCdfllJmTmcVP6t7B2PMPs86lnk4de9155c
+Accept: application/json
+
+### Create New Role
+POST http://127.0.0.1:8000/api/roles
+Authorization: Bearer 1|0Bv2Yo3OjyM4DqDFJrXrAUFGkGq4ddblhq5fEZVy08c61db6
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "superadmin",
+    "permissions": ["akses_admin", "akses_user", "akses_report", "akses_permission"]
+}
+
+### Update Role
+PUT http://127.0.0.1:8000/api/roles/2
+Authorization: Bearer 3|X5Mx3adxP6lU9kpjvDKbVVYk6qVqFE1fwCCC4P8Yebac69e2
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "admin",
+    "permissions": ["dashboard.index", "users.index", "roles.index", "permissions.index"]
+}
+
+### Get All Permissions
+GET http://127.0.0.1:8000/api/permissions?page=2
+Authorization: Bearer 2|szE1LnECfpX5ZcCdfllJmTmcVP6t7B2PMPs86lnk4de9155c
+Accept: application/json
+
+### Assign Roles to User
+POST http://127.0.0.1:8000/api/users/1/roles
+Authorization: Bearer 1|0Bv2Yo3OjyM4DqDFJrXrAUFGkGq4ddblhq5fEZVy08c61db6
+Content-Type: application/json
+Accept: application/json
+
+{
+    "roles": ["superadmin"]
+}
+
+### Get User Roles and Permissions
+GET http://127.0.0.1:8000/api/users/1/roles
+Authorization: Bearer 1|tFSkVAmuLmVNAhmmS3gCXrszHs0jl5xDVBDZVw1R3cf4deca
+Accept: application/json
+
+### Create new permission
+POST http://127.0.0.1:8000/api/permissions
+Authorization: Bearer 19|SpyAho0cER5tee0i731Km3hkOznSl35qKl8eJX7Q09ccf758
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "akses_permission"
+}
+
+
+

@@ -1,0 +1,45 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 32|1rXQGLkMCdFzUmrfTxePNonUXtOfN3LoaYzpePms9aa9b925
+
+### Login with username
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "superadmin",
+    "password": "123456"
+}
+
+### Get all suppliers
+GET {{baseUrl}}/master/suppliers?page=1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### search suppliers
+GET {{baseUrl}}/master/suppliers/search
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### update supplier
+PUT {{baseUrl}}/master/suppliers/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+Accept: application/json
+
+{
+    "sap_code": "CKPUCIDR01",
+    "name": "Solusi Bangun Indonesia, PT"
+}
+
+### check target
+GET {{baseUrl}}/master/suppliers/cek-target
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### import supplier
+GET {{baseUrl}}/master/suppliers/import
+Authorization: Bearer {{token}}
+Accept: application/json
+
+

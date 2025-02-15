@@ -1,0 +1,88 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 22|OKQ0jmXAokYWc7U3KAFkeC3dMrdTzLslsbQLADLp42072c7b
+
+
+### Login with username
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "superadmin",
+    "password": "123456"
+}
+
+### Get All Users
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get All Users (No Pagination)
+GET {{baseUrl}}/users/all
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get Single User
+GET {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create User
+POST {{baseUrl}}/users
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Prana Dian",
+    "username": "prana",
+    "email": "prana@gmail.com",
+    "nik": "6666666",
+    "project": "000H",
+    "department_id": 14,
+    "password": "12345678",
+    "password_confirmation": "12345678",
+    "roles": ["admin", "accounting"]
+}
+
+### Update User
+PUT {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Omnof Sullivan",
+    "username": "superadmin",
+    "email": "oman@gmail.com",
+    "nik": "11230",
+    "project": "000H",
+    "department_id": 19,
+    "roles": ["superadmin"]
+}
+
+### Delete User
+DELETE {{baseUrl}}/users/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get User Roles and Permissions
+GET {{baseUrl}}/users/1/roles
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Assign Role to User
+POST {{baseUrl}}/users/1/roles
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "roles": ["admin"]
+}
+
+
+
+
+
+
