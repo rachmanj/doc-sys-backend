@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\RolePermissionController;
 use App\Http\Controllers\Auth\UserController;
-use App\Http\Controllers\Auth\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('roles')->group(function () {
@@ -32,18 +31,8 @@ Route::prefix('users')->group(function () {
     Route::post('/', [UserController::class, 'store']);
     Route::put('/{user}', [UserController::class, 'update']);
     Route::delete('/{user}', [UserController::class, 'destroy']);
-    
+
     // Role management routes (moving existing routes here for better organization)
     Route::get('/{user}/roles', [RolePermissionController::class, 'getUserRolesAndPermissions']);
     Route::post('/{user}/roles', [RolePermissionController::class, 'assignRoleToUser']);
-});
-
-// Department Management Routes
-Route::prefix('departments')->group(function () {
-    Route::get('/', [DepartmentController::class, 'index']);
-    Route::get('/all', [DepartmentController::class, 'getAllDepartments']);
-    Route::post('/', [DepartmentController::class, 'store']);
-    Route::get('/{department}', [DepartmentController::class, 'show']);
-    Route::put('/{department}', [DepartmentController::class, 'update']);
-    Route::delete('/{department}', [DepartmentController::class, 'destroy']);
 });

@@ -43,3 +43,78 @@ Authorization: Bearer {{token}}
 Accept: application/json
 
 
+### Get all projects
+GET {{baseUrl}}/master/projects/all
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Search projects
+GET {{baseUrl}}/master/projects/search
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create new project
+POST {{baseUrl}}/master/projects
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "code": "PRJ001",
+    "owner": "John Doe",
+    "location": "Jakarta"
+}
+
+### Update project
+PUT {{baseUrl}}/master/projects/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "code": "PRJ001",
+    "owner": "Jane Doe",
+    "location": "Bandung"
+}
+
+### Delete project
+DELETE {{baseUrl}}/master/projects/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get all invoice types
+GET {{baseUrl}}/master/invoice-types/all
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Search invoice types
+GET {{baseUrl}}/master/invoice-types/search
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create new invoice type
+POST {{baseUrl}}/master/invoice-types
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "type_name": "Regular Invoice"
+}
+
+### Update invoice type
+PUT {{baseUrl}}/master/invoice-types/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "type_name": "Updated Invoice Type"
+}
+
+### Delete invoice type
+DELETE {{baseUrl}}/master/invoice-types/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+

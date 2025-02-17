@@ -1,0 +1,38 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 32|1rXQGLkMCdFzUmrfTxePNonUXtOfN3LoaYzpePms9aa9b925
+
+### Login with username
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "superadmin",
+    "password": "123456"
+}
+
+### Check ITO Import (Pre-import validation)
+POST {{baseUrl}}/master/ito/import-check
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary
+
+------WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="ito_sample.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< ./files/ito_sample.xlsx
+------WebKitFormBoundary--
+
+### Import ITO Data
+POST {{baseUrl}}/master/ito/import
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary
+
+------WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="ito_sample.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+< ./files/ito_sample.xlsx
+------WebKitFormBoundary--
