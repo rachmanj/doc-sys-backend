@@ -70,7 +70,14 @@ class ItoImport implements ToModel, WithHeadingRow
 
     private function getItoTypeId()
     {
-        $ito_type = AdditionalDocumentType::where('type_name', 'ITO')->first();
+        $ito_type = AdditionalDocumentType::firstOrCreate(
+            ['type_name' => 'ITO']
+        );
+
+        if (!$ito_type) {
+            throw new \Exception('Failed to get or create ITO document type');
+        }
+
         return $ito_type->id;
     }
 

@@ -28,9 +28,15 @@ class SupplierController extends Controller
         ]);
     }
 
-    public function all()
+    public function all(Request $request)
     {
-        $suppliers = Supplier::all();
+        $query = Supplier::query();
+
+        if ($request->has('type')) {
+            $query->where('type', $request->type);
+        }
+
+        $suppliers = $query->orderBy('name', 'asc')->get();
 
         return response()->json([
             'status' => 'success',
@@ -239,5 +245,21 @@ class SupplierController extends Controller
             'message' => 'Suppliers retrieved successfully',
             'data' => $suppliers
         ]);
+    }
+
+    public function getPaymentProject(Request $request)
+    {
+        try {
+            $supplierId = $request->query('supplier_id');
+            $supplier = Supplier::find($supplierId);
+
+            if ($supplier) {
+                return response()->json(['payment_project' => $supplier->payment_project]);
+            }
+
+            return response()->json(['payment_project' => null]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to get payment project'], 500);
+        }
     }
 }

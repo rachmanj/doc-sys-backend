@@ -28,7 +28,7 @@ class ItoController extends Controller
             Excel::import($import, $request->file('file'));
 
             return response()->json([
-                'status' => 'success',
+                'success' => true,
                 'message' => 'Data imported successfully',
                 'data' => [
                     'imported' => $import->getSuccessCount(),

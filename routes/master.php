@@ -14,11 +14,12 @@ Route::prefix('master')->name('master.')->group(function () {
         Route::get('/import', [SupplierController::class, 'import'])->name('import');
         Route::get('/search', [SupplierController::class, 'search'])->name('search');
         Route::get('/all', [SupplierController::class, 'all'])->name('all');
-        Route::get('/', [SupplierController::class, 'index'])->name('index');
+        // Route::get('/', [SupplierController::class, 'index'])->name('index');
         Route::post('/', [SupplierController::class, 'store'])->name('store');
-        Route::get('/{supplier}', [SupplierController::class, 'show'])->name('show');
+        // Route::get('/{supplier}', [SupplierController::class, 'show'])->name('show');
         Route::put('/{supplier}', [SupplierController::class, 'update'])->name('update');
         Route::delete('/{supplier}', [SupplierController::class, 'destroy'])->name('destroy');
+        Route::get('/get-payment-project', [SupplierController::class, 'getPaymentProject'])->name('get-payment-project');
     });
 
     Route::prefix('document-types')->name('document-types.')->group(function () {

@@ -1,5 +1,5 @@
 @baseUrl = http://127.0.0.1:8000/api
-@token = 32|1rXQGLkMCdFzUmrfTxePNonUXtOfN3LoaYzpePms9aa9b925
+@token = 50|IYgXc2ILq7FlZtwwXWemSDWB4Nh0GhT8uEm1SdDl1125ded9
 
 ### Login with username
 POST http://127.0.0.1:8000/api/auth/login
@@ -12,12 +12,12 @@ Accept: application/json
 }
 
 ### Get all suppliers
-GET {{baseUrl}}/master/suppliers?page=1
+GET {{baseUrl}}/master/suppliers/all?type=vendor
 Authorization: Bearer {{token}}
 Accept: application/json
 
 ### search suppliers
-GET {{baseUrl}}/master/suppliers/search
+GET {{baseUrl}}/master/suppliers/search?type=vendor
 Authorization: Bearer {{token}}
 Accept: application/json
 
@@ -42,6 +42,21 @@ GET {{baseUrl}}/master/suppliers/import
 Authorization: Bearer {{token}}
 Accept: application/json
 
+### Check Supplier payment project
+GET {{baseUrl}}/master/suppliers/get-payment-project?supplier_id=1
+Authorization: Bearer {{token}}
+
+### Check ITO Import (Pre-import validation)
+POST {{baseUrl}}/master/ito/import-check
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary
+
+### Import ITO Data
+POST {{baseUrl}}/master/ito/import
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary
 
 ### Get all projects
 GET {{baseUrl}}/master/projects/all
@@ -116,5 +131,6 @@ Accept: application/json
 DELETE {{baseUrl}}/master/invoice-types/1
 Authorization: Bearer {{token}}
 Accept: application/json
+
 
 

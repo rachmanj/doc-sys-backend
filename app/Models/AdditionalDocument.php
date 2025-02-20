@@ -18,4 +18,9 @@ class AdditionalDocument extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function invoice(): BelongsTo
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }

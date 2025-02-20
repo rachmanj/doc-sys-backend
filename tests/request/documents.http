@@ -1,0 +1,78 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 54|LcxcwixsmBSQL8BPpzLwfnc8b3ghAQtmE96xqLfjf103212b
+
+### Login with username
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "superadmin",
+    "password": "123456"
+}
+
+### Search Invoices
+GET {{baseUrl}}/documents/invoices/search
+Authorization: Bearer {{token}}
+
+### Get Invoice by ID
+GET {{baseUrl}}/documents/invoices/get-by-id?invoice_id=1
+Authorization: Bearer {{token}}
+
+### Create Invoice
+POST {{baseUrl}}/documents/invoices/store
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "invoice_number": "INV001",
+    "invoice_date": "2024-02-18",
+    "receive_date": "2024-02-18",
+    "supplier_id": 1,
+    "po_no": "PO001",
+    "amount": 1000.00,
+    "type_id": 1
+}
+
+### Update Invoice
+PUT {{baseUrl}}/documents/invoices/update/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "receive_project": "017C"
+}
+
+### check invoice duplication
+GET {{baseUrl}}/documents/invoices/check-duplication?invoice_number=INV001&supplier_id=1
+Authorization: Bearer {{token}}
+
+### Search Additional Documents
+GET {{baseUrl}}/documents/additional-documents/search
+Authorization: Bearer {{token}}
+
+### Get Additional Document by ID
+GET {{baseUrl}}/documents/additional-documents/2
+Authorization: Bearer {{token}}
+
+### Create Additional Document
+POST {{baseUrl}}/documents/additional-documents/store
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "type_id": 1,
+    "document_number": "DOC001",
+    "document_date": "2024-02-18",
+    "po_no": "PO001",
+    "invoice_id": 1,
+    "project": "PROJECT1"
+}
+
+### Get Documents by PO
+GET {{baseUrl}}/documents/additional-documents/get-by-po?po_no=250200289
+Authorization: Bearer {{token}}
+
+### Get Documents by Invoice
+GET {{baseUrl}}/documents/additional-documents/get-by-invoice?invoice_id=1
+Authorization: Bearer {{token}}
