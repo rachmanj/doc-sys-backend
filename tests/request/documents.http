@@ -1,5 +1,5 @@
 @baseUrl = http://127.0.0.1:8000/api
-@token = 54|LcxcwixsmBSQL8BPpzLwfnc8b3ghAQtmE96xqLfjf103212b
+@token = 60|yqsbzcKFr4iea0w9bJk1fwP4p1WEw3JZISNVdxtud68dbc5d
 
 ### Login with username
 POST http://127.0.0.1:8000/api/auth/login
@@ -45,6 +45,26 @@ Content-Type: application/json
 
 ### check invoice duplication
 GET {{baseUrl}}/documents/invoices/check-duplication?invoice_number=INV001&supplier_id=1
+Authorization: Bearer {{token}}
+
+### Upload Attachments to Invoice
+POST {{baseUrl}}/documents/invoices/1/upload-attachments
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="attachments[]"; filename="test.pdf"
+Content-Type: application/pdf
+
+< ./test-files/test.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Get Attachments for Invoice
+GET {{baseUrl}}/documents/invoices/3/attachments
+Authorization: Bearer {{token}}
+
+### Delete Attachment
+DELETE {{baseUrl}}/documents/invoices/attachments/1
 Authorization: Bearer {{token}}
 
 ### Search Additional Documents

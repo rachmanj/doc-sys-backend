@@ -1,3 +1,6 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 54|LcxcwixsmBSQL8BPpzLwfnc8b3ghAQtmE96xqLfjf103212b
+
 ### Register
 POST http://127.0.0.1:8000/api/auth/register
 Content-Type: application/json
@@ -20,8 +23,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "login": "superadmin",
-    "password": "123456"
+    "login": "dalmi",
+    "password": "12345678"
 }
 
 ### Login with email
@@ -104,6 +107,10 @@ Accept: application/json
 {
     "name": "akses_permission"
 }
+
+### Test
+GET {{baseUrl}}/test
+Authorization: Bearer {{token}}
 
 
 
