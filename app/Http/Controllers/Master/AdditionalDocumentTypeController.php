@@ -32,7 +32,7 @@ class AdditionalDocumentTypeController extends Controller
 
     public function all()
     {
-        $types = AdditionalDocumentType::select('type_name')->orderBy('type_name', 'asc')->get();
+        $types = AdditionalDocumentType::select('id', 'type_name')->orderBy('type_name', 'asc')->get();
 
         return response()->json([
             'success' => true,

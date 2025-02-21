@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Documents;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
 use App\Models\Invoice;
 use App\Models\AdditionalDocument;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -133,6 +135,14 @@ class InvoiceController extends Controller
                     ->update(['invoice_id' => $invoice->id]);
             }
 
+            //save activity log
+            ActivityLog::create([
+                'user_id' => Auth::user()->id,
+                'model_name' => 'Invoice',
+                'model_id' => $invoice->id,
+                'activity' => 'Created invoice'
+            ]);
+
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice created successfully',
@@ -225,6 +235,14 @@ class InvoiceController extends Controller
 
                 $changes['selected_documents'] = $request->selected_documents;
             }
+
+            //save activity log
+            ActivityLog::create([
+                'user_id' => Auth::user()->id,
+                'model_name' => 'Invoice',
+                'model_id' => $invoice->id,
+                'activity' => 'Updated invoice'
+            ]);
 
             return response()->json([
                 'success' => true,

@@ -26,13 +26,13 @@ Route::prefix('documents')->name('documents.')->group(function () {
     });
 
     Route::prefix('additional-documents')->name('additional-documents.')->group(function () {
+        Route::get('check-duplication', [AdditionalDocumentController::class, 'checkDuplication'])->name('checkDuplication');
         Route::get('get-by-po', [AdditionalDocumentController::class, 'getByPo'])->name('getByPo');
-        Route::get('/search', [AdditionalDocumentController::class, 'search'])->name('search');
+        Route::get('search', [AdditionalDocumentController::class, 'search'])->name('search');
+        Route::get('get-by-invoice', [AdditionalDocumentController::class, 'getByInvoice'])->name('getByInvoice');
         Route::get('{additionalDocument}', [AdditionalDocumentController::class, 'getById'])->name('getById');
-        Route::post('store', [AdditionalDocumentController::class, 'store'])->name('store');
         Route::put('{additionalDocument}', [AdditionalDocumentController::class, 'update'])->name('update');
         Route::delete('{additionalDocument}', [AdditionalDocumentController::class, 'destroy'])->name('destroy');
-
-        Route::get('get-by-invoice', [AdditionalDocumentController::class, 'getByInvoice'])->name('getByInvoice');
+        Route::post('store', [AdditionalDocumentController::class, 'store'])->name('store');
     });
 });

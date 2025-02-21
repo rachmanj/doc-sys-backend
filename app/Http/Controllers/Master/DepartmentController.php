@@ -144,4 +144,17 @@ class DepartmentController extends Controller
             ], 500);
         }
     }
+
+    public function getCurLocs()
+    {
+        $cur_locs = Department::select('location_code')
+            ->whereNotNull('location_code')
+            ->distinct()
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $cur_locs->pluck('location_code')
+        ]);
+    }
 }

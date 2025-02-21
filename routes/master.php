@@ -9,6 +9,7 @@ use App\Http\Controllers\Master\ProjectController;
 use App\Http\Controllers\Master\InvoiceTypeController;
 
 Route::prefix('master')->name('master.')->group(function () {
+    // SUPPPLIERS ROUTES
     Route::prefix('suppliers')->name('suppliers.')->group(function () {
         Route::get('/cek-target', [SupplierController::class, 'cek_target'])->name('cek');
         Route::get('/import', [SupplierController::class, 'import'])->name('import');
@@ -22,6 +23,7 @@ Route::prefix('master')->name('master.')->group(function () {
         Route::get('/get-payment-project', [SupplierController::class, 'getPaymentProject'])->name('get-payment-project');
     });
 
+    // ADDITIONAL DOCUMENT TYPES ROUTES
     Route::prefix('document-types')->name('document-types.')->group(function () {
         Route::get('/all', [AdditionalDocumentTypeController::class, 'all'])->name('all');
         Route::post('/', [AdditionalDocumentTypeController::class, 'store'])->name('store');
@@ -31,21 +33,24 @@ Route::prefix('master')->name('master.')->group(function () {
         Route::delete('/{additionalDocumentType}', [AdditionalDocumentTypeController::class, 'destroy'])->name('destroy');
     });
 
+    // ITO Routes
     Route::prefix('ito')->name('ito.')->group(function () {
         Route::post('/import', [ItoController::class, 'import'])->name('import');
         Route::post('/import-check', [ItoController::class, 'checkImport'])->name('import.check');
     });
 
-    // Department Management Routes
+    // DEPARTMENTS ROUTES
     Route::prefix('departments')->group(function () {
         Route::get('/search', [DepartmentController::class, 'search']);
         Route::get('/all', [DepartmentController::class, 'all']);
         Route::post('/', [DepartmentController::class, 'store']);
         Route::put('/{department}', [DepartmentController::class, 'update']);
         Route::delete('/{department}', [DepartmentController::class, 'destroy']);
+
+        Route::get('/cur-locs', [DepartmentController::class, 'getCurLocs']);
     });
 
-    // Project Management Routes
+    // PROJECTS ROUTES
     Route::prefix('projects')->name('projects.')->group(function () {
         Route::get('/search', [ProjectController::class, 'search'])->name('search');
         Route::get('/all', [ProjectController::class, 'all'])->name('all');
@@ -55,7 +60,7 @@ Route::prefix('master')->name('master.')->group(function () {
         Route::delete('/{project}', [ProjectController::class, 'destroy'])->name('destroy');
     });
 
-    // Invoice Types Routes
+    // INVOICE TYPES ROUTES
     Route::prefix('invoice-types')->name('invoice-types.')->group(function () {
         Route::get('/search', [InvoiceTypeController::class, 'search'])->name('search');
         Route::get('/all', [InvoiceTypeController::class, 'all'])->name('all');

@@ -1,5 +1,5 @@
 @baseUrl = http://127.0.0.1:8000/api
-@token = 42|SZOYNlA2tWRnoNEAFGmcfJNRVe7dJaohm64fzKHTd5277a5c
+@token = 68|mbP05z1hnE4ZtuV4HoJAYe4B4jZRZfnirVsA0HXG9ea7c389
 
 
 ### Login with username
@@ -47,6 +47,10 @@ Accept: application/json
 {
     "location_code": "000H-ACC"
 }
+
+### Get curlocs distinct
+GET {{baseUrl}}/master/departments/cur-locs
+Authorization: Bearer {{token}}
 
 
 

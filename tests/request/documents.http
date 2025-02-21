@@ -1,5 +1,5 @@
 @baseUrl = http://127.0.0.1:8000/api
-@token = 60|yqsbzcKFr4iea0w9bJk1fwP4p1WEw3JZISNVdxtud68dbc5d
+@token = 68|mbP05z1hnE4ZtuV4HoJAYe4B4jZRZfnirVsA0HXG9ea7c389
 
 ### Login with username
 POST http://127.0.0.1:8000/api/auth/login
@@ -68,11 +68,11 @@ DELETE {{baseUrl}}/documents/invoices/attachments/1
 Authorization: Bearer {{token}}
 
 ### Search Additional Documents
-GET {{baseUrl}}/documents/additional-documents/search
+GET {{baseUrl}}/documents/additional-documents/search?document_number=251000668
 Authorization: Bearer {{token}}
 
 ### Get Additional Document by ID
-GET {{baseUrl}}/documents/additional-documents/2
+GET {{baseUrl}}/documents/additional-documents/200
 Authorization: Bearer {{token}}
 
 ### Create Additional Document
@@ -86,7 +86,17 @@ Content-Type: application/json
     "document_date": "2024-02-18",
     "po_no": "PO001",
     "invoice_id": 1,
-    "project": "PROJECT1"
+    "project": "PROJECT1", 
+    "remarks": "Remarks"
+}
+
+### Update Additional Document
+PUT {{baseUrl}}/documents/additional-documents/200
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "remarks": "Mantap jiwa"
 }
 
 ### Get Documents by PO
@@ -95,4 +105,8 @@ Authorization: Bearer {{token}}
 
 ### Get Documents by Invoice
 GET {{baseUrl}}/documents/additional-documents/get-by-invoice?invoice_id=1
+Authorization: Bearer {{token}}
+
+### check additional document duplication
+GET {{baseUrl}}/documents/additional-documents/check-duplication?docnum=DOC001&type_id=2
 Authorization: Bearer {{token}}
