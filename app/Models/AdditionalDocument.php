@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class AdditionalDocument extends Model
 {
@@ -22,5 +23,10 @@ class AdditionalDocument extends Model
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
+    }
+
+    public function lpds(): BelongsToMany
+    {
+        return $this->belongsToMany(Lpd::class);
     }
 }

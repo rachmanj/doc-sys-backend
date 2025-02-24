@@ -1,5 +1,5 @@
 @baseUrl = http://127.0.0.1:8000/api
-@token = 68|mbP05z1hnE4ZtuV4HoJAYe4B4jZRZfnirVsA0HXG9ea7c389
+@token = 71|aB9YNFwLF0E6VjgTl1hxS7ly7ZqSKnTucSY7cX0eafb7b83a
 
 ### Login with username
 POST http://127.0.0.1:8000/api/auth/login
@@ -12,7 +12,7 @@ Accept: application/json
 }
 
 ### Search Invoices
-GET {{baseUrl}}/documents/invoices/search
+GET {{baseUrl}}/documents/invoices/search?page=1
 Authorization: Bearer {{token}}
 
 ### Get Invoice by ID

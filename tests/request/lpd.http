@@ -1,0 +1,58 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 74|i97K5LnoV3yxBJJ6drmfanL2OYui2SrKiMVLm6hW6e60c584
+
+### Login with username
+POST http://127.0.0.1:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "superadmin",
+    "password": "123456"
+}
+
+### Search LPDs
+GET http://127.0.0.1:8000/api/deliveries/lpds?page=1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get LPD by ID
+GET http://127.0.0.1:8000/api/deliveries/lpds/2
+Authorization: Bearer {{token}}
+
+### Create LPD
+POST http://127.0.0.1:8000/api/deliveries/lpds
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nomor": "LPD002",
+    "date": "2024-02-18",
+    "origin_department": 1,
+    "destination_department": 2,
+    "attention_person": "John Doe",
+    "notes": "Sample notes"
+}
+
+### Update LPD
+PUT http://127.0.0.1:8000/api/deliveries/lpds/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "attention_person": "Jane Doe",
+    "status": "sent"
+}
+
+### Check LPD number duplication
+GET http://127.0.0.1:8000/api/deliveries/lpds/check-duplication?nomor=LPD001
+Authorization: Bearer {{token}}
+
+### Get all LPDs
+GET http://127.0.0.1:8000/api/deliveries/lpds/all
+Authorization: Bearer {{token}}
+
+### Delete LPD
+DELETE http://127.0.0.1:8000/api/deliveries/lpds/1
+Authorization: Bearer {{token}}
